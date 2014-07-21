@@ -20,26 +20,9 @@ var navUrl = function move(actor, pageNum) {
     limit = $(textInput[1]).val();
     offset = $(textInput[2]).val();
     dateFilter = $(textInput[3]).val();
-    // if (limit != "") {queryUrl += ("&limit=" + limit)};
-    // if (offset != "") {queryUrl += ("&offset=" + offset)};
-    // if (dateFilter != "") {queryUrl += ("&datefilter=" + dateFilter)};
-    if (limit == "" && offset == "" && dateFilter == "") {
-        //queryUrl = queryUrl;
-    } else if (limit == "" && offset == "" && dateFilter != "") {
-        queryUrl = queryUrl + ("&datefilter=" + dateFilter);
-    } else if (limit == "" && offset != "" && dateFilter == "") {
-        queryUrl = queryUrl + ("&offset=" + offset);
-    } else if (limit != "" && offset == "" && dateFilter == "") {
-        queryUrl = queryUrl + ("&limit=" + limit);
-    } else if (limit != "" && offset != "" && dateFilter == "") {
-        queryUrl = (queryUrl + ("&limit=" + limit)) + ("&offset=" + offset);
-    } else if (limit != "" && offset == "" && dateFilter != "") {
-        queryUrl = (queryUrl + ("&datefilter=" + dateFilter)) + ("&limit=" + limit);
-    } else if (limit == "" && offset != "" && dateFilter != "") {
-        queryUrl = (queryUrl + ("&datefilter=" + dateFilter)) + ("&offset=" + offset);
-    } else {
-        queryUrl = ((queryUrl + ("&datefilter=" + dateFilter)) + ("&limit=" + limit)) + ("&offset=" + offset);
-    }
+    if (limit != "") {queryUrl += ("&limit=" + limit)};
+    if (offset != "") {queryUrl += ("&offset=" + offset)};
+    if (dateFilter != "") {queryUrl += ("&datefilter=" + dateFilter)};
     listInput = $("select");    
     outputFormat = $(listInput[0]).val();
     queryUrl = queryUrl + ("&output=" + outputFormat);
