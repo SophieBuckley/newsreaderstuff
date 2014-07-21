@@ -21,11 +21,21 @@
              <br>
              Offset: <input type="text" name="offset">
              <br>
+             Date filter: <input type="text" name="date_filter"> (yyyy-mm-dd)
+             <br>
+             Output:
+             <select>
+                 <option value="html">Html</option>
+                 <option value="json">Json</option>
+                 <option value="csv">CSV</option>
+             <select>
+             <br>
              Query type:
              <select>
+                 <!--https://newsreader.scraperwiki.com/actors_of_a_type?uris.0=dbo:Person&filter=David&limit=5&offset=10&output=html-->
                  <option value="actors_of_a_type">Actors of a specified type</option>
                  <option value="describe_uri">Details of a URI</option>
-                 <option value="events_details_filtered_by_actor">Events details involving a specified actor</option>
+                 <option value="event_details_filtered_by_actor">Event details involving a specified actor</option>
                  <option value="event_label_frequency_count">Frequency of event labels in events</option>
                  <option value="get_document">Get the text of a document</option>
                  <option value="get_document_metadata">Get document metadata</option>
