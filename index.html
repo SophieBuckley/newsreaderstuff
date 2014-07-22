@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://www.scraperwiki.com/vendor/style/bootstrap.min.css">
 </head>
 <body>
-    <div id="wrapper">
+    <div id="wrapper" align="center">
         <h1> NewsReader Query </h1>
             <a id="queryUrl" href="#"></a>  
          <p> Welcome! Please enter your desired query parameters. </p>
@@ -21,7 +21,9 @@
              <br>
              Offset: <input type="text" name="offset">
              <br>
-             Date filter: <input type="text" name="date_filter"> (yyyy-mm-dd)
+             Filter: <input type="text" name="string_filter">
+             <br>
+             Date filter: <input type="text" name="date_filter">
              <br>
              Output:
              <select>
@@ -32,7 +34,6 @@
              <br>
              Query type:
              <select>
-                 <!--https://newsreader.scraperwiki.com/actors_of_a_type?uris.0=dbo:Person&filter=David&limit=5&offset=10&output=html-->
                  <option value="actors_of_a_type">Actors of a specified type</option>
                  <option value="describe_uri">Details of a URI</option>
                  <option value="event_details_filtered_by_actor">Event details involving a specified actor</option>
@@ -45,14 +46,18 @@
                  <option value="property_of_actors_of_a_type">Get a property of actors of a type</option>
                  <option value="summary_of_events_with_actor">Get events mentioning a named actor</option>
                  <option value="summary_of_events_with_actor_type">Get events mentioning a type of actor</option>
-                 <option value="summary_of_events_with_label">Search for events with a specified label</option>
+                 <option value="summary_of_events_with_event_label">Search for events with a specified label</option>
                  <option value="summary_of_events_with_framenet">Get events with a specific framenet value</option>
                  <option value="summary_of_events_with_two_actors">Get events mentioning two named actors</option>
                  <option value="types_of_actors">Types of actors</option>
              </select>
-             </br>
+             <br>
              <input type="submit" value="Submit">
+             </br>
          </form>
+         <br>
+         <div id="results"> </div>
+         </br>
     </div>
 </body>
 </html>

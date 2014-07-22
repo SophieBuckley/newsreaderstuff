@@ -9,34 +9,45 @@ $(document).ready(function() {
         actor = actor.toLowerCase().replace(/(^([a-zA-Z\p{M}]))|([ _][a-zA-Z\p{M}])/g, function(letter) {
            return letter.toUpperCase();
          });
-        navUrl(actor, "1");
+        runQuery(actor, "1");
      });
 });
 
-var navUrl = function move(actor, pageNum) { 
+var runQuery = function move(actor, pageNum) { 
     var initUrl = "https://newsreader.scraperwiki.com/{0}/page/{1}?uris.0=dbpedia:{2}"
     var queryUrl = initUrl.replace("{1}", pageNum);
     var queryUrl = queryUrl.replace("{2}", actor);
     limit = $(textInput[1]).val();
     offset = $(textInput[2]).val();
-    dateFilter = $(textInput[3]).val();
+    stringFilter = $(textInput[3]).val();
+    dateFilter = $(textInput[4]).val();
     if (limit != "") {queryUrl += ("&limit=" + limit)};
     if (offset != "") {queryUrl += ("&offset=" + offset)};
+    if (stringFilter != "") {queryUrl += ("&filter=" + stringFilter)};
     if (dateFilter != "") {queryUrl += ("&datefilter=" + dateFilter)};
     listInput = $("select");    
-    outputFormat = $(listInput[0]).val();
-    queryUrl = queryUrl + ("&output=" + outputFormat);
+    //Fix outputFormat... open in new tab? window.open(queryUrl, "_blank");
+    //outputFormat = $(listInput[0]).val();
+    //queryUrl = queryUrl + ("&output=" + outputFormat);
     queryType = $(listInput[1]).val();
     queryUrl = queryUrl.replace("{0}", queryType);
-    disableParameters;
-    //console.log(queryUrl);
-    // http://stackoverflow.com/questions/5141910/javascript-location-href-to-open-in-new-window-tab 
-    window.open(queryUrl, "_blank");
-    // http://stackoverflow.com/questions/8970600/how-to-navigate-to-a-different-page-with-javascript
-    //window.location = queryUrl; 
-}
-
-var disableParameters = function() {
-    //document.myForm.myField.disabled = true;
-    //if (
+    console.log(queryUrl);
+    //display the results of the query in a table underneath the submit button.
+    $.ajax({
+        url: queryUrl,
+        cache: false
+    })
+    .done(function(html) {
+        var table = $(html).find("table");
+        var pagination = $(html).find(".pagination");
+        $("#results").html("");
+        $("#results").append(pagination[0]);
+        $("#results").append(table);
+        $("#results").append(pagination[1]);
+        $(".pagination a").click(function(event) {
+            event.preventDefault();
+            nextPageNum = $(this).html();
+            runQuery(actor, nextPageNum)
+        })
+    })
 }
