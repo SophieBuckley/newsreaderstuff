@@ -26,28 +26,30 @@ var runQuery = function move(actor, pageNum) {
     if (stringFilter != "") {queryUrl += ("&filter=" + stringFilter)};
     if (dateFilter != "") {queryUrl += ("&datefilter=" + dateFilter)};
     listInput = $("select");    
-    //Fix outputFormat... open in new tab? window.open(queryUrl, "_blank");
-    //outputFormat = $(listInput[0]).val();
-    //queryUrl = queryUrl + ("&output=" + outputFormat);
+    outputFormat = $(listInput[0]).val();
+    queryUrl = queryUrl + ("&output=" + outputFormat);
     queryType = $(listInput[1]).val();
     queryUrl = queryUrl.replace("{0}", queryType);
-    console.log(queryUrl);
-    //display the results of the query in a table underneath the submit button.
-    $.ajax({
-        url: queryUrl,
-        cache: false
-    })
-    .done(function(html) {
-        var table = $(html).find("table");
-        var pagination = $(html).find(".pagination");
-        $("#results").html("");
-        $("#results").append(pagination[0]);
-        $("#results").append(table);
-        $("#results").append(pagination[1]);
-        $(".pagination a").click(function(event) {
-            event.preventDefault();
-            nextPageNum = $(this).html();
-            runQuery(actor, nextPageNum)
+    if (outputFormat == "html") {
+    //display the results of the query in a table underneath the submit button
+        $.ajax({
+            url: queryUrl,
+            cache: false
         })
-    })
+        .done(function(html) {
+            var table = $(html).find("table");
+            var pagination = $(html).find(".pagination");
+            $("#results").html("");
+            $("#results").append(pagination[0]);
+            $("#results").append(table);
+            $("#results").append(pagination[1]);
+            $(".pagination a").click(function(event) {
+                event.preventDefault();
+                nextPageNum = $(this).html();
+                runQuery(actor, nextPageNum);
+            })
+        })
+    } else {
+        window.open(queryUrl, "_blank");
+    }
 }
