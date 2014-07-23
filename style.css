@@ -1,17 +1,4 @@
-h1 {
-    position: relative;
-    left: 10px;
-}
-
-form {
-    position: relative;
-    left: 10px;
-}
-
-p {
-    color: black;
-    font-size: 15pt;
-    font-weight: 200;
+.pagination {
     position: relative;
     left: 10px;
 }
