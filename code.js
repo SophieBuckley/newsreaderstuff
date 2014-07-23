@@ -14,13 +14,14 @@ $(document).ready(function() {
 });
 
 var runQuery = function move(actor, pageNum) { 
-    var initUrl = "https://newsreader.scraperwiki.com/{0}/page/{1}?uris.0=dbpedia:{2}"
+    var initUrl = "https://newsreader.scraperwiki.com/{0}/page/{1}?uris.0={2}"
     var queryUrl = initUrl.replace("{1}", pageNum);
-    var queryUrl = queryUrl.replace("{2}", actor);
+    var queryUrl = queryUrl.replace("{2}", "dbpedia:" + actor);
     limit = $(textInput[1]).val();
     offset = $(textInput[2]).val();
     stringFilter = $(textInput[3]).val();
     dateFilter = $(textInput[4]).val();
+    framenet = $(textInput[5]).val();
     if (limit != "") {queryUrl += ("&limit=" + limit)};
     if (offset != "") {queryUrl += ("&offset=" + offset)};
     if (stringFilter != "") {queryUrl += ("&filter=" + stringFilter)};

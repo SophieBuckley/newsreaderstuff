@@ -11,15 +11,13 @@
 </head>
 <body>
     <div id="wrapper" align="center">
-        <!--can't be bothered having a messed up logo that it can't retrieve at the minute-->
-        <!--<a href="http://www.newsreader-project.eu/">-->
-            <!--<img src="http://www.newsreader.scraperwiki.com/static/NWR_logo_1920x200.png" class="img-responsive" alt="Responsive image">-->
-        <!-- </a>-->
-        <h1> NewsReader Query </h1>
+        <img src="https://newsreader.scraperwiki.com/static/NWR_logo_1920x200.png">
             <a id="queryUrl" href="#"></a>  
+            <br> </br>
          <p> Welcome! Please enter your desired query parameters. </p>
          <form name="input">
-             Actor: <input type="text" name="actor">
+             Actor: <input type="text" name="actor1">
+                    <input type="text" name="actor2">
              <br>
              Limit: <input type="text" name="limit">
              <br>
@@ -28,6 +26,8 @@
              Filter: <input type="text" name="string_filter">
              <br>
              Date filter: <input type="text" name="date_filter">
+             <br>
+             Framenet: <input type="text" name="framenet">
              <br>
              Output:
              <select>
@@ -60,7 +60,7 @@
              </br>
          </form>
          <br>
-         <div id="results"> </div>
+         <div id="results" align="left"> </div>
          </br>
     </div>
 </body>
