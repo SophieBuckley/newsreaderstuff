@@ -3,40 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title> NewsReader Query </title>
-    <!--script tags could be put at the end of the code so that the page runs faster?-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src=code.js></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://www.scraperwiki.com/vendor/style/bootstrap.min.css">
 </head>
 <body>
-    <div id="wrapper" align="center">
-        <img src="https://newsreader.scraperwiki.com/static/NWR_logo_1920x200.png">
+    <div id="wrapper">
+        <a href="http://www.newsreader-project.eu/">
+             <img src="https://newsreader.scraperwiki.com/static/NWR_logo_1920x200.png">
+         </a>
             <a id="queryUrl" href="#"></a>  
-            <br> </br>
-         <p> Welcome! Please enter your desired query parameters. </p>
-         <form name="input">
-             Actor: <input type="text" name="actor1">
-                    <input type="text" name="actor2">
-             <br>
-             Limit: <input type="text" name="limit">
-             <br>
-             Offset: <input type="text" name="offset">
-             <br>
-             Filter: <input type="text" name="string_filter">
-             <br>
-             Date filter: <input type="text" name="date_filter">
-             <br>
-             Framenet: <input type="text" name="framenet">
-             <br>
-             Output:
-             <select>
-                 <option value="html">Html</option>
-                 <option value="json">Json</option>
-                 <option value="csv">CSV</option>
-             <select>
-             <br>
-             Query type:
+         <div id="form-container">
+         <form class="form-horizontal" name="input">
+             <div class="control-group">
+             <label class="control-label">Query type:</label>
+             <div class="controls">
              <select>
                  <option value="actors_of_a_type">Actors of a specified type</option>
                  <option value="describe_uri">Details of a URI</option>
@@ -55,13 +37,63 @@
                  <option value="summary_of_events_with_two_actors">Get events mentioning two named actors</option>
                  <option value="types_of_actors">Types of actors</option>
              </select>
-             <br>
-             <input type="submit" value="Submit">
-             </br>
+             </div>
+             </div>
+             <div class="control-group">
+                 <label  class="control-label">Actor:</label> 
+                 <div class="controls">
+                    <input type="text" name="actor1">
+                    <input type="text" name="actor2">
+                 </div>
+             </div>
+             <div class="control-group">
+                 <label class="control-label">Limit:</label> 
+                 <div class="controls">
+                    <input type="text" name="limit">
+                 </div>
+             </div>
+             <div class="control-group">
+                 <label class="control-label">Offset:</label> 
+                 <div class="controls">
+                    <input type="text" name="offset">
+                 </div>
+             </div>
+             <div class="control-group">
+                 <label class="control-label">Filter:</label> 
+                 <div class="controls">
+                    <input type="text" name="string_filter">
+                 </div>
+             </div>
+             <div class="control-group">
+                 <label class="control-label">Date filter:</label>
+                 <div class="controls">
+                    <input type="text" name="date_filter">
+                 </div>
+             </div>
+             <div class="control-group">
+                 <label class="control-label">Framenet:</label>
+                 <div class="controls">
+                    <input type="text" name="framenet">
+                 </div>
+             </div>
+             <div class="control-group">
+                 <label class="control-label">Output:</label>
+                 <div class="controls"> 
+                 <select>
+                     <option value="html">Html</option>
+                     <option value="json">Json</option>
+                     <option value="csv">CSV</option>
+                 </select>
+                 </div>
+             </div>
+             <div class="control-group">
+                 <div class="controls">
+                    <input type="submit" value="Submit">
+                 </div>
+             </div>
          </form>
-         <br>
-         <div id="results" align="left"> </div>
-         </br>
+         </div>
+         <div id="results"> </div>
     </div>
 </body>
 </html>

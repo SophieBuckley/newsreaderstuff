@@ -1,4 +1,5 @@
-.pagination {
-    position: relative;
-    left: 10px;
+#form-container {
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+    width: 500px;
 }
