@@ -50,10 +50,13 @@ function runQuery(actor1, actor2, pageNum, limit, offset, stringFilter, dateFilt
         .done(function(html) {
             var table = $(html).find("table");
             var pagination = $(html).find(".pagination");
+            var error = $(html).find(".text-warning");
+            var errorMessage = $(html).find("code");
             $("#results").html("");
             $("#results").append(pagination[0]);
             $("#results").append(table);
             $("#results").append(pagination[1]);
+            if (error.length != 0) {$("#results").append(error.append(errorMessage))};
             $(".pagination a").click(function(event) {
                 event.preventDefault();
                 nextPageNum = $(this).html();
